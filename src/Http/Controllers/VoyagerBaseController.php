@@ -515,7 +515,7 @@ class VoyagerBaseController extends Controller
             }
         }
 
-        $displayName = $affected > 1 ? $dataType->getTranslatedAttribute('display_name_plural') : $dataType->getTranslatedAttribute('display_name_singular');
+        $displayName = $affected > 1 ? $dataType->title : $dataType->getTranslatedAttribute('display_name_singular');
 
         $data = $affected
             ? [

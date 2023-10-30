@@ -7,28 +7,14 @@
             @section('breadcrumbs')
             <ol class="breadcrumb hidden-xs">
                 @php
-                $segments = array_filter(explode('/', str_replace(route('voyager.dashboard'), '', Request::url())));
                 $url = route('voyager.dashboard');
                 @endphp
-                @if(count($segments) == 0)
-                    <li class="active"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</li>
-                @else
-                    <li class="active">
-                        <a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</a>
-                    </li>
-                    @foreach ($segments as $segment)
-                        @php
-                        $url .= '/'.$segment;
-                        @endphp
-                        @if ($loop->last)
-                            <li>{{ ucfirst(urldecode($segment)) }}</li>
-                        @else
-                            <li>
-                                <a href="{{ $url }}">{{ ucfirst(urldecode($segment)) }}</a>
-                            </li>
-                        @endif
-                    @endforeach
-                @endif
+                <li class="active">
+                    <a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</a>
+                </li>
+                <li>
+                    <a href="{{ $url }}">{{ $dataType->title }}</a>
+                </li>
             </ol>
             @show
         </div>

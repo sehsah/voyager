@@ -4,7 +4,7 @@
     @section('page_title', __('voyager::bread.edit_bread_for_table', ['table' => $dataType->name]))
     @php
         $display_name = $dataType->getTranslatedAttribute('display_name_singular');
-        $display_name_plural = $dataType->getTranslatedAttribute('display_name_plural');
+        $display_name_plural = $dataType->title;
     @endphp
 @else
     @section('page_title', __('voyager::bread.create_bread_for_table', ['table' => $table]))

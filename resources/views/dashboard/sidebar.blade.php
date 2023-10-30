@@ -11,26 +11,39 @@
                             <img src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
                     </div>
-                    <div class="title">{{Voyager::setting('admin.title', 'VOYAGER')}}</div>
                 </a>
             </div><!-- .navbar-header -->
 
-            <div class="panel widget center bgimage"
-                 style="background-image:url({{ Voyager::image( Voyager::setting('admin.bg_image'), voyager_asset('images/bg.jpg') ) }}); background-size: cover; background-position: 0px;">
-                <div class="dimmer"></div>
-                <div class="panel-content">
-                    <img src="{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
-                    <h4>{{ ucwords(Auth::user()->name) }}</h4>
-                    <p>{{ Auth::user()->email }}</p>
-
-                    <a href="{{ route('voyager.profile') }}" class="btn btn-primary">{{ __('voyager::generic.profile') }}</a>
-                    <div style="clear:both"></div>
-                </div>
-            </div>
-
         </div>
         <div id="adminmenu">
-            <admin-menu :items="{{ menu('admin', '_json') }}"></admin-menu>
+            <ul class="nav navbar-nav">
+                @foreach(menu('admin', '_json') as $menu)
+                <li class="{{ $menu->children->count() ? 'dropdown' : '' }}">
+                    <a target="_self"  href={{ $menu->children->count() > 0 ?  "#$menu->id-dropdown-element" : $menu->href }} 
+                        data-toggle="{{ $menu->children->count() > 0 ? 'collapse' : false }}"
+                        aria-expanded="{{ $menu->children->count() > 0 ?  $menu->active : false }}">
+                        <span class="icon {{ $menu->icon_class }}"></span> 
+                        <span class="title"> {{ __( $menu->title) }}</span></span>
+                    </a>
+                    @if($menu->children->count() > 0)
+                    <div id="{{$menu->id}}-dropdown-element" class="panel-collapse collapse  {{ $menu->active ? 'in' : '' }}">
+                        <div class="panel-body">
+                            <ul class="p-0" style="padding:0px;">
+                                @foreach($menu->children as $submenu)
+                                <li class="">
+                                    <a target="_self" href=" href={{ $submenu->children->count() > 0 ?  "#$submenu->id-dropdown-element" : $submenu->href }}">
+                                        <span class="icon {{ $submenu->icon_class }}"></span> 
+                                        <span class="title"> {{ __( $submenu->title) }}</span></span>
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>       
+                    @endif                                 
+                </li>
+                @endforeach
+            </ul>
         </div>
     </nav>
 </div>

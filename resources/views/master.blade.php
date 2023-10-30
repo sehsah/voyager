@@ -8,6 +8,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
     <!-- Favicon -->
     <?php $admin_favicon = Voyager::setting('admin.icon_image', ''); ?>
@@ -21,6 +22,7 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     @yield('css')
     @if(__('voyager::generic.is_rtl') == 'true')
@@ -30,10 +32,10 @@
 
     <!-- Few Dynamic Styles -->
     <style type="text/css">
-        .voyager .side-menu .navbar-header {
+        /* .voyager .side-menu .navbar-header {
             background:{{ config('voyager.primary_color','#22A7F0') }};
             border-color:{{ config('voyager.primary_color','#22A7F0') }};
-        }
+        } */
         .widget .btn-primary{
             border-color:{{ config('voyager.primary_color','#22A7F0') }};
         }
