@@ -17,6 +17,7 @@ class CreateDataTypesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('title')->nullable();
             $table->string('display_name_singular');
             $table->string('display_name_plural');
             $table->string('icon')->nullable();
