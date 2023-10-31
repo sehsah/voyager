@@ -33,6 +33,22 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
+            'title'   => __('voyager::seeders.menu_items.roles'),
+            'url'     => '',
+            'route'   => 'voyager.roles.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-lock',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.users'),
             'url'     => '',
             'route'   => 'voyager.users.index',
@@ -49,17 +65,17 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.roles'),
+            'title'   => __('voyager::seeders.menu_items.settings'),
             'url'     => '',
-            'route'   => 'voyager.roles.index',
+            'route'   => 'voyager.settings.index',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-lock',
+                'icon_class' => 'voyager-settings',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 2,
+                'order'      => 4,
             ])->save();
         }
 
@@ -127,20 +143,5 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.settings'),
-            'url'     => '',
-            'route'   => 'voyager.settings.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-settings',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 14,
-            ])->save();
-        }
     }
 }
