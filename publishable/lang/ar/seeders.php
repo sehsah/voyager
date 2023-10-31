@@ -76,7 +76,7 @@ return [
     ],
     'settings'   => [
         'api' => [
-            'title'                      => 'title',
+            'title'                      => 'العنوان',
         ],
         'site'  => [
             'description'                  => 'Site Description',
