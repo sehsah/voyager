@@ -14,6 +14,7 @@ class DataTypesTableSeeder extends Seeder
         if (!$dataType->exists) {
             $dataType->fill([
                 'name'                  => 'users',
+                'title'                  => 'users',
                 'display_name_singular' => __('voyager::seeders.data_types.user.singular'),
                 'display_name_plural'   => __('voyager::seeders.data_types.user.plural'),
                 'icon'                  => 'voyager-person',
@@ -29,6 +30,7 @@ class DataTypesTableSeeder extends Seeder
         if (!$dataType->exists) {
             $dataType->fill([
                 'name'                  => 'menus',
+                'title'                  => 'menus',
                 'display_name_singular' => __('voyager::seeders.data_types.menu.singular'),
                 'display_name_plural'   => __('voyager::seeders.data_types.menu.plural'),
                 'icon'                  => 'voyager-list',
@@ -43,6 +45,7 @@ class DataTypesTableSeeder extends Seeder
         if (!$dataType->exists) {
             $dataType->fill([
                 'name'                  => 'roles',
+                'title'                  => 'roles',
                 'display_name_singular' => __('voyager::seeders.data_types.role.singular'),
                 'display_name_plural'   => __('voyager::seeders.data_types.role.plural'),
                 'icon'                  => 'voyager-lock',

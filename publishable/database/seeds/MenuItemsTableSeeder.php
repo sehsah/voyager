@@ -33,22 +33,6 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.media'),
-            'url'     => '',
-            'route'   => 'voyager.media.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-images',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.users'),
             'url'     => '',
             'route'   => 'voyager.users.index',
@@ -126,21 +110,6 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.compass'),
-            'url'     => '',
-            'route'   => 'voyager.compass.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-compass',
-                'color'      => null,
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 12,
-            ])->save();
-        }
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
